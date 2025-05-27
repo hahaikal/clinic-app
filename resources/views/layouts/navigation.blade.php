@@ -29,6 +29,10 @@
                         <x-nav-link :href="route('admin.tindakan.index')" :active="request()->routeIs('admin.tindakan.*')">
                             {{ __('Manajemen Tindakan') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('admin.obat.index')" :active="request()->routeIs('admin.obat.*')">
+                            {{ __('Manajemen Obat') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>

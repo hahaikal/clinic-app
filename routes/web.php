@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\WilayahController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\TindakanController;
+use App\Http\Controllers\Admin\ObatController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +23,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('pegawai', PegawaiController::class);
         Route::resource('users', UserController::class);
         Route::resource('tindakan', TindakanController::class);
+        Route::resource('obat', ObatController::class);
 
         Route::get('/admin/users', function () {
             return "Halaman Pengelolaan User (Khusus Admin)";
