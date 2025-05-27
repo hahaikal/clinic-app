@@ -16,19 +16,19 @@ class CheckRole
      * @param  string  ...$roles
      */
    public function handle(Request $request, Closure $next, ...$roles): Response
-{
-    if (!Auth::check()) {
-        return redirect('login');
-    }
-
-    $user = Auth::user();
-
-    foreach ($roles as $role) {
-        if ($user->hasRole($role)) {
-            return $next($request);
+    {
+        if (!Auth::check()) {
+            return redirect('login');
         }
-    }
 
-    return redirect('/dashboard')->with('error', 'Anda tidak memiliki izin untuk mengakses halaman tersebut.');
-}
+        $user = Auth::user();
+
+        foreach ($roles as $role) {
+            if ($user->hasRole($role)) {
+                return $next($request);
+            }
+        }
+
+        return redirect('/dashboard')->with('error', 'Anda tidak memiliki izin untuk mengakses halaman tersebut.');
+    }
 }

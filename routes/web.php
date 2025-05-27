@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\WilayahController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,6 +17,8 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:Admin')->name('admin.')->prefix('admin')->group(function () {
         Route::resource('wilayah', WilayahController::class);
+
+        Route::resource('users', UserController::class);
 
         Route::get('/admin/users', function () {
             return "Halaman Pengelolaan User (Khusus Admin)";
