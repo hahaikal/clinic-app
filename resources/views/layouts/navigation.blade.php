@@ -15,6 +15,13 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @if(Auth::check() && Auth::user()->hasRole('Admin'))
+                        <x-nav-link :href="route('admin.wilayah.index')" :active="request()->routeIs('admin.wilayah.*')">
+                            {{ __('Wilayah') }}
+                        </x-nav-link>
+                        {{-- Tambahkan link master data lain di sini nanti --}}
+                    @endif
                 </div>
             </div>
 
