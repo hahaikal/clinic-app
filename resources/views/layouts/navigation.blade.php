@@ -21,7 +21,10 @@
                         <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')"> {{-- TAMBAHKAN INI --}}
                             {{ __('Manajemen User') }}
                         </x-nav-link>
-                        {{-- Tambahkan link master data lain di sini nanti --}}
+
+                        <x-nav-link :href="route('admin.pegawai.index')" :active="request()->routeIs('admin.pegawai.*')"> {{-- TAMBAHKAN INI --}}
+                            {{ __('Manajemen Pegawai') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
