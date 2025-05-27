@@ -18,12 +18,16 @@
                             {{ __('Wilayah') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')"> {{-- TAMBAHKAN INI --}}
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                             {{ __('Manajemen User') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('admin.pegawai.index')" :active="request()->routeIs('admin.pegawai.*')"> {{-- TAMBAHKAN INI --}}
+                        <x-nav-link :href="route('admin.pegawai.index')" :active="request()->routeIs('admin.pegawai.*')">
                             {{ __('Manajemen Pegawai') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('admin.tindakan.index')" :active="request()->routeIs('admin.tindakan.*')">
+                            {{ __('Manajemen Tindakan') }}
                         </x-nav-link>
                     @endif
                 </div>

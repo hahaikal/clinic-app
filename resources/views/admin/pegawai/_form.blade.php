@@ -50,12 +50,12 @@
         <option value="">-- Tidak Ditautkan --</option>
 
         @foreach ($users ?? [] as $user)
-            <option value="{{ $user->id }}" {{ (old('user_id', $pegawai->user_id ?? '') == $user->id) ? 'selected' : '' }}>
-                {{ $user->name }} ({{ $user->email }}) - Role: {{ isset($user->role) && isset($user->role->name) ? $user->role->name : 'N/A' }}
+            <option value="{{ $user->id }}" {{ (old('user_id', (isset($pegawai) && is_object($pegawai) && isset($pegawai->user_id)) ? $pegawai->user_id : '') == $user->id) ? 'selected' : '' }}>
+                {{ $user->name }} ({{ $user->email }}) - Role: {{ optional($user->role)->name ?? 'N/A' }}
             </option>
         @endforeach
 
-        @if(isset($pegawai) && $pegawai->user_id && !collect($users ?? [])->contains('id', $pegawai->user_id))
+        @if(isset($pegawai) && $pegawai->user_id && !collect($users ?? [])->contains('id', $pegawai->user_id) && is_object($pegawai->user))
             <option value="{{ $pegawai->user_id }}" selected>
                 {{ $pegawai->user->name }} ({{ $pegawai->user->email }}) - Role: {{ $pegawai->user->role ? $pegawai->user->role->name : 'N/A' }} (Saat ini terpilih)
             </option>
