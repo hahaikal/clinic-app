@@ -51,4 +51,14 @@ class Kunjungan extends Model
     {
         return $this->belongsTo(Pegawai::class, 'dokter_id');
     }
+
+    public function daftarTindakan()
+    {
+        return $this->hasMany(KunjunganTindakan::class);
+    }
+
+    public function daftarObat()
+    {
+        return $this->hasMany(KunjunganObat::class);
+    }
 }

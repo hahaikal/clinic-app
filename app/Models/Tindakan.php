@@ -20,4 +20,9 @@ class Tindakan extends Model
     protected $casts = [
         'harga' => 'decimal:2',
     ];
+
+    public function detailKunjunganTindakan()
+    {
+        return $this->hasMany(KunjunganTindakan::class);
+    }
 }

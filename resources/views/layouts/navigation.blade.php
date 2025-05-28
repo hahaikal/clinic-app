@@ -40,6 +40,12 @@
                             {{ __('Pendaftaran Pasien Baru') }}
                         </x-nav-link>
                     @endif
+
+                    @if(Auth::check() && Auth::user()->hasRole('Dokter'))
+                        <x-nav-link :href="route('dokter.kunjungan.index')" :active="request()->routeIs('dokter.kunjungan.*')">
+                            {{ __('Daftar Kunjungan Pasien') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

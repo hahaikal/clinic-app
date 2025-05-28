@@ -23,4 +23,9 @@ class Obat extends Model
         'harga_jual' => 'decimal:2',
         'stok' => 'integer',
     ];
+
+    public function detailKunjunganObat()
+    {
+        return $this->hasMany(KunjunganObat::class);
+    }
 }
