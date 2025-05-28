@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\TindakanController;
 use App\Http\Controllers\Admin\ObatController;
 use App\Http\Controllers\Petugas\PendaftaranController;
 use App\Http\Controllers\Dokter\PelayananController;
+use App\Http\Controllers\Kasir\PembayaranController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,19 +44,19 @@ Route::middleware('auth')->group(function () {
         Route::post('kunjungan/{kunjungan}/selesai-pemeriksaan', [PelayananController::class, 'selesaiPemeriksaan'])->name('kunjungan.pemeriksaan.selesai');
     });
 
-    // Route::get('/dokter/pemeriksaan', function () {
-    //     return "Halaman Pemeriksaan Pasien (Khusus Dokter)";
-    // })->middleware('role:Dokter')->name('dokter.pemeriksaan');
+    Route::middleware('role:Kasir')->name('kasir.')->prefix('kasir')->group(function () {
+        Route::get('daftar-tagihan', [PembayaranController::class, 'indexDaftarTagihan'])->name('tagihan.index');
+        Route::get('tagihan/{kunjungan}/bayar', [PembayaranController::class, 'showFormPembayaran'])->name('tagihan.bayar.form');
+        Route::post('tagihan/{kunjungan}/proses', [PembayaranController::class, 'prosesPembayaran'])->name('tagihan.proses');
+    });
 
     Route::get('/staff/laporan-klinik', function () {
         return "Halaman Laporan Klinik (Untuk Admin & Dokter)";
     })->middleware('role:Admin,Dokter')->name('staff.laporan');
 
-    
-
-    Route::get('/kasir/pembayaran', function () {
-        return "Halaman Pembayaran Pasien (Khusus Kasir)";
-    })->middleware('role:Kasir')->name('kasir.pembayaran');
+    // Route::get('/kasir/pembayaran', function () {
+    //     return "Halaman Pembayaran Pasien (Khusus Kasir)";
+    // })->middleware('role:Kasir')->name('kasir.pembayaran');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

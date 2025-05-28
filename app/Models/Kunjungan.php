@@ -61,4 +61,9 @@ class Kunjungan extends Model
     {
         return $this->hasMany(KunjunganObat::class);
     }
+
+    public function pembayaran()
+    {
+        return $this->hasOne(Pembayaran::class, 'kunjungan_id');
+    }
 }

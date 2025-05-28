@@ -46,6 +46,12 @@
                             {{ __('Daftar Kunjungan Pasien') }}
                         </x-nav-link>
                     @endif
+
+                    @if(Auth::check() && Auth::user()->hasRole('Kasir'))
+                        <x-nav-link :href="route('kasir.tagihan.index')" :active="request()->routeIs('kasir.tagihan.*')">
+                            {{ __('Daftar Tagihan Pasien') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
