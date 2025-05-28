@@ -89,6 +89,9 @@
                                             <a href="{{ route('dokter.kunjungan.pemeriksaan.form', $kunjungan->id) }}" class="bg-indigo-600 hover:bg-indigo-800 text-black font-bold py-1 px-3 rounded text-xs">
                                                 Periksa
                                             </a>
+                                            <a href="{{ route('shared.pasien.show', $kunjungan->pasien_id) }}" class="bg-indigo-600 hover:bg-indigo-800 text-black font-bold py-1 px-3 rounded text-xs">
+                                                detail
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

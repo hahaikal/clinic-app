@@ -22,7 +22,7 @@ class WilayahController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'kode_wilayah' => 'nullable|string|max:20|unique:wilayah,kode_wilayah',
+            'kode_wilayah' => 'nullable|string|max:20|unique:wilayahs,kode_wilayah',
             'nama_wilayah' => 'required|string|max:255',
         ]);
 
@@ -48,7 +48,7 @@ class WilayahController extends Controller
     public function update(Request $request, Wilayah $wilayah)
     {
         $validatedData = $request->validate([
-            'kode_wilayah' => 'nullable|string|max:20|unique:wilayah,kode_wilayah,' . $wilayah->id,
+            'kode_wilayah' => 'nullable|string|max:20|unique:wilayahs,kode_wilayah,' . $wilayah->id,
             'nama_wilayah' => 'required|string|max:255',
         ]);
 

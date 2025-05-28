@@ -84,6 +84,9 @@
                                             <a href="{{ route('kasir.tagihan.bayar.form', $kunjungan->id) }}" class="bg-green-600 hover:bg-green-800 text-black font-bold py-1 px-3 rounded text-xs">
                                                 Proses Pembayaran
                                             </a>
+                                            <a href="{{ route('shared.pasien.show', $kunjungan->pasien_id) }}" class="bg-green-600 hover:bg-green-800 text-black font-bold py-1 px-3 rounded text-xs">
+                                                detail
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

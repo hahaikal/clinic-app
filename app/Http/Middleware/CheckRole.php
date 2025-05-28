@@ -24,7 +24,7 @@ class CheckRole
         $user = Auth::user();
 
         foreach ($roles as $role) {
-            if ($user->hasRole($role)) {
+            if ($user->role && strtolower($user->role->name) === strtolower($role)) {
                 return $next($request);
             }
         }

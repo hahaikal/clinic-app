@@ -2,15 +2,19 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Admin\WilayahController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\TindakanController;
 use App\Http\Controllers\Admin\ObatController;
-use App\Http\Controllers\Petugas\PendaftaranController;
-use App\Http\Controllers\Dokter\PelayananController;
-use App\Http\Controllers\Kasir\PembayaranController;
 use App\Http\Controllers\Admin\LaporanController;
+
+use App\Http\Controllers\Petugas\PendaftaranController;
+
+use App\Http\Controllers\Dokter\PelayananController;
+
+use App\Http\Controllers\Kasir\PembayaranController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:Petugas Pendaftaran')->name('petugas.pendaftaran.')->prefix('petugas/pendaftaran')->group(function () {
         Route::get('pasien-baru', [PendaftaranController::class, 'create'])->name('pasien.create');
         Route::post('pasien-baru', [PendaftaranController::class, 'store'])->name('pasien.store');
+        Route::get('pasien-lama/search', [PendaftaranController::class, 'searchPasien'])->name('pasien.search');
+        Route::post('pasien-lama/{pasien}/kunjungan', [PendaftaranController::class, 'storeKunjunganPasienLama'])->name('kunjungan.lama.store');
     });
 
     Route::middleware('role:Dokter')->name('dokter.')->prefix('dokter')->group(function () {
@@ -52,9 +58,9 @@ Route::middleware('auth')->group(function () {
         Route::post('tagihan/{kunjungan}/proses', [PembayaranController::class, 'prosesPembayaran'])->name('tagihan.proses');
     });
 
-    Route::get('/staff/laporan-klinik', function () {
-        return "Halaman Laporan Klinik (Untuk Admin & Dokter)";
-    })->middleware('role:Admin,Dokter')->name('staff.laporan');
+    Route::middleware('role:Petugas Pendaftaran,Dokter')->name('shared.')->prefix('shared')->group(function () {
+        Route::get('pasien/{pasien}', [\App\Http\Controllers\Petugas\PasienController::class, 'show'])->name('pasien.show');
+    });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

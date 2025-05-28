@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->text('alamat_lengkap');
-            $table->foreignId('wilayahs_id')->nullable()->constrained('wilayahs')->onDelete('set null');
+            $table->foreignId('wilayah_id')->nullable()->constrained('wilayahs')->onDelete('set null');
             $table->string('telepon', 20)->nullable();
             $table->string('pekerjaan', 100)->nullable();
             $table->string('agama', 50)->nullable();
