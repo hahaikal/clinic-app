@@ -40,7 +40,7 @@
             <div class="bg-white shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-3">Rincian Tagihan (No: {{ $pembayaran->no_tagihan }})</h3>
-                    <div class="space-y-2 text-sm mb-4">
+                    <div class="space-y-2 text-sm mb-4 text-gray-900">
                         @if($kunjungan->daftarTindakan->count() > 0)
                             <p class="font-medium">Tindakan Medis:</p>
                             <ul class="list-disc list-inside pl-4">
@@ -72,20 +72,20 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                             <div>
                                 <label for="biaya_tambahan" class="block text-sm font-medium text-gray-700">Biaya Tambahan (Rp)</label>
-                                <input type="number" name="biaya_tambahan" id="biaya_tambahan" value="{{ old('biaya_tambahan', $pembayaran->biaya_tambahan ?? 0) }}" min="0" step="any" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <input type="number" name="biaya_tambahan" id="biaya_tambahan" value="{{ old('biaya_tambahan', $pembayaran->biaya_tambahan ?? 0) }}" min="0" step="any" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
                             </div>
                             <div>
                                 <label for="keterangan_biaya_tambahan" class="block text-sm font-medium text-gray-700">Ket. Biaya Tambahan</label>
-                                <input type="text" name="keterangan_biaya_tambahan" id="keterangan_biaya_tambahan" value="{{ old('keterangan_biaya_tambahan', $pembayaran->keterangan_biaya_tambahan ?? '') }}" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <input type="text" name="keterangan_biaya_tambahan" id="keterangan_biaya_tambahan" value="{{ old('keterangan_biaya_tambahan', $pembayaran->keterangan_biaya_tambahan ?? '') }}" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
                             </div>
                             <div>
                                 <label for="diskon_nominal" class="block text-sm font-medium text-gray-700">Diskon Nominal (Rp)</label>
-                                <input type="number" name="diskon_nominal" id="diskon_nominal" value="{{ old('diskon_nominal', $pembayaran->diskon_nominal ?? 0) }}" min="0" step="any" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <input type="number" name="diskon_nominal" id="diskon_nominal" value="{{ old('diskon_nominal', $pembayaran->diskon_nominal ?? 0) }}" min="0" step="any" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
                             </div>
                         </div>
                         <hr class="my-3">
 
-                        <div class="text-right mb-4 space-y-1">
+                        <div class="text-right mb-4 space-y-1 text-gray-700">
                             <p class="text-sm">Subtotal (Tindakan + Obat + Biaya Tambahan): <span class="font-semibold">Rp {{ number_format($pembayaran->subtotal, 0, ',', '.') }}</span></p>
                             <p class="text-sm">Total Diskon: <span class="font-semibold">- Rp {{ number_format($diskon_nominal_display ?? ($pembayaran->subtotal - $pembayaran->total_setelah_diskon), 0, ',', '.') }}</span></p>
                             <p class="text-lg font-bold">Grand Total: <span class="text-green-600">Rp {{ number_format($pembayaran->grand_total, 0, ',', '.') }}</span></p>
@@ -96,11 +96,11 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                                 <div>
                                     <label for="jumlah_bayar" class="block text-sm font-medium text-gray-700">Jumlah Bayar (Rp) <span class="text-red-500">*</span></label>
-                                    <input type="number" name="jumlah_bayar" id="jumlah_bayar" value="{{ old('jumlah_bayar') }}" min="0" step="any" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="number" name="jumlah_bayar" id="jumlah_bayar" value="{{ old('jumlah_bayar') }}" min="0" step="any" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
                                 </div>
                                 <div>
                                     <label for="metode_pembayaran" class="block text-sm font-medium text-gray-700">Metode Pembayaran <span class="text-red-500">*</span></label>
-                                    <select name="metode_pembayaran" id="metode_pembayaran" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <select name="metode_pembayaran" id="metode_pembayaran" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
                                         <option value="">-- Pilih Metode --</option>
                                         @foreach($metodePembayaranOptions as $metode)
                                             <option value="{{ $metode }}" {{ old('metode_pembayaran') == $metode ? 'selected' : '' }}>{{ $metode }}</option>
@@ -109,11 +109,11 @@
                                 </div>
                                 <div class="md:col-span-2">
                                     <label for="nomor_referensi_pembayaran" class="block text-sm font-medium text-gray-700">No. Referensi (Kartu/Transaksi)</label>
-                                    <input type="text" name="nomor_referensi_pembayaran" id="nomor_referensi_pembayaran" value="{{ old('nomor_referensi_pembayaran') }}" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="nomor_referensi_pembayaran" id="nomor_referensi_pembayaran" value="{{ old('nomor_referensi_pembayaran') }}" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">
                                 </div>
                                 <div class="md:col-span-2">
                                     <label for="catatan_pembayaran" class="block text-sm font-medium text-gray-700">Catatan Pembayaran</label>
-                                    <textarea name="catatan_pembayaran" id="catatan_pembayaran" rows="2" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">{{ old('catatan_pembayaran') }}</textarea>
+                                    <textarea name="catatan_pembayaran" id="catatan_pembayaran" rows="2" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 text-gray-700 rounded-md">{{ old('catatan_pembayaran') }}</textarea>
                                 </div>
                             </div>
                             <div class="mt-6 flex justify-end">

@@ -9,21 +9,21 @@
     </div>
 @endif
 
-<div class="mb-4">
+<div class="mb-4 text-gray-700">
     <label for="kode_tindakan" class="block text-sm font-medium text-gray-700">Kode Tindakan</label>
     <input type="text" name="kode_tindakan" id="kode_tindakan" value="{{ old('kode_tindakan', $tindakan->kode_tindakan ?? '') }}"
            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
            autocomplete="off">
 </div>
 
-<div class="mb-4">
+<div class="mb-4 text-gray-700">
     <label for="nama_tindakan" class="block text-sm font-medium text-gray-700">Nama Tindakan <span class="text-red-500">*</span></label>
     <input type="text" name="nama_tindakan" id="nama_tindakan" value="{{ old('nama_tindakan', $tindakan->nama_tindakan ?? '') }}"
            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
            required autocomplete="off">
 </div>
 
-<div class="mb-4">
+<div class="mb-4 text-gray-700">
     <label for="harga" class="block text-sm font-medium text-gray-700">Harga (Rp) <span class="text-red-500">*</span></label>
     <input type="number" name="harga" id="harga" value="{{ old('harga', $tindakan->harga ?? '0') }}"
            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

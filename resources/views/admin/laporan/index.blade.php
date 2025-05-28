@@ -11,7 +11,7 @@
                 <div class="p-6 border-b border-gray-200">
                     <form method="GET" action="{{ route('admin.laporan.index') }}" class="flex items-center space-x-3">
                         <label for="tipe_kunjungan_filter" class="text-sm font-medium text-gray-700 whitespace-nowrap">Laporan Kunjungan:</label>
-                        <select name="tipe_kunjungan" id="tipe_kunjungan_filter" class="block w-auto pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <select name="tipe_kunjungan" id="tipe_kunjungan_filter" class="block w-auto pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option value="bulanan" {{ ($dataKunjungan['tipe'] ?? 'bulanan') == 'bulanan' ? 'selected' : '' }}>
                                 Bulanan (12 Bulan Terakhir)
                             </option>

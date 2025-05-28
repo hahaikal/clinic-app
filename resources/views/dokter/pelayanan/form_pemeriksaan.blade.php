@@ -31,7 +31,7 @@
             <div class="bg-white shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 border-b border-gray-200">
                     <h3 class="text-lg font-semibold text-gray-900 mb-3">Informasi Kunjungan</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-black">
                         <div><strong>No. Kunjungan:</strong> {{ $kunjungan->no_kunjungan }}</div>
                         <div><strong>Tgl Kunjungan:</strong> {{ $kunjungan->tanggal_kunjungan->format('d M Y, H:i') }}</div>
                         <div><strong>Jenis Kunjungan:</strong> {{ $kunjungan->jenis_kunjungan }}</div>
@@ -41,7 +41,7 @@
                     </div>
                     <hr class="my-4">
                     <h3 class="text-lg font-semibold text-gray-900 mb-3">Informasi Pasien</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-700">
                         <div><strong>No. RM:</strong> {{ $kunjungan->pasien->no_rm ?? 'N/A' }}</div>
                         <div><strong>Nama:</strong> {{ $kunjungan->pasien->nama_pasien ?? 'N/A' }}</div>
                         <div><strong>NIK:</strong> {{ $kunjungan->pasien->nik ?? '-' }}</div>
@@ -60,12 +60,12 @@
                         <h3 class="text-lg font-semibold text-gray-900 mb-3">Pemeriksaan & Diagnosa Awal (SOAP)</h3>
                         @csrf
 
-                        <div class="mb-4">
+                        <div class="mb-4 text-gray-700">
                             <label for="anamnesis" class="block text-sm font-medium text-gray-700">Anamnesis (Subjective & Objective)</label>
                             <textarea name="anamnesis" id="anamnesis" rows="4" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">{{ old('anamnesis', $kunjungan->anamnesis) }}</textarea>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 text-gray-700">
                             <div>
                                 <label for="tinggi_badan_cm" class="block text-sm font-medium text-gray-700">Tinggi Badan (cm)</label>
                                 <input type="number" name="tinggi_badan_cm" id="tinggi_badan_cm" value="{{ old('tinggi_badan_cm', $kunjungan->tinggi_badan_cm) }}" min="0" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Tinggi (cm)">
@@ -80,7 +80,7 @@
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 text-gray-700">
                             <div>
                                 <label for="sistole_mmhg" class="block text-sm font-medium text-gray-700">Sistole (mmHg)</label>
                                 <input type="number" name="sistole_mmhg" id="sistole_mmhg" value="{{ old('sistole_mmhg', $kunjungan->sistole_mmhg) }}" min="0" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Sistole (mmHg)">
@@ -100,10 +100,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-8 flex justify-end">
+                <div class="my-8 flex justify-end ">
                     <input type="hidden" name="status_kunjungan_baru" value="Menunggu Pembayaran">
 
-                    <button type="submit" class="bg-green-600 hover:bg-green-800 text-black font-bold py-2 px-4 rounded">
+                    <button type="submit" class="bg-green-500 hover:bg-green-800 text-black font-bold py-2 px-4 rounded">
                         Selesaikan Pemeriksaan & Lanjut ke Pembayaran
                     </button>
                 </div>

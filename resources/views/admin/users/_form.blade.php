@@ -9,14 +9,14 @@
     </div>
 @endif
 
-<div class="mb-4">
+<div class="mb-4 text-gray-700">
     <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap <span class="text-red-500">*</span></label>
     <input type="text" name="name" id="name" value="{{ old('name', $user->name ?? '') }}"
            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
            required autocomplete="name">
 </div>
 
-<div class="mb-4">
+<div class="mb-4 text-gray-700">
     <label for="email" class="block text-sm font-medium text-gray-700">Alamat Email <span class="text-red-500">*</span></label>
     <input type="email" name="email" id="email" value="{{ old('email', $user->email ?? '') }}"
            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -24,22 +24,21 @@
 </div>
 
 @if(!isset($user))
-    <div class="mb-4">
+    <div class="mb-4 text-gray-700">
         <label for="password" class="block text-sm font-medium text-gray-700">Password <span class="text-red-500">*</span></label>
         <input type="password" name="password" id="password"
                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                required autocomplete="new-password">
     </div>
 
-    <div class="mb-4">
+    <div class="mb-4 text-gray-700">
         <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Konfirmasi Password <span class="text-red-500">*</span></label>
         <input type="password" name="password_confirmation" id="password_confirmation"
                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                required autocomplete="new-password">
     </div>
 @else
-    {{-- Info untuk edit password --}}
-    <div class="mb-4">
+    <div class="mb-4 text-gray-700">
         <label for="password" class="block text-sm font-medium text-gray-700">Password Baru (Opsional)</label>
         <input type="password" name="password" id="password"
                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -54,7 +53,7 @@
     </div>
 @endif
 
-<div class="mb-4">
+<div class="mb-4 text-gray-700">
     <label for="role_id" class="block text-sm font-medium text-gray-700">Role <span class="text-red-500">*</span></label>
     <select name="role_id" id="role_id"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

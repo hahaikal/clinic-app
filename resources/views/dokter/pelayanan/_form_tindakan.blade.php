@@ -3,7 +3,7 @@
         <h3 class="text-lg font-semibold text-gray-900 mb-4">Tindakan Medis</h3>
 
         @if($kunjungan->daftarTindakan && $kunjungan->daftarTindakan->count() > 0)
-            <div class="mb-4">
+            <div class="mb-4 ">
                 <h4 class="text-md font-medium text-gray-800 mb-2">Daftar Tindakan Diberikan:</h4>
                 <ul class="list-disc list-inside space-y-1 text-sm">
                     @foreach($kunjungan->daftarTindakan as $itemTindakan)
@@ -31,7 +31,7 @@
         <form method="POST" action="{{ route('dokter.kunjungan.tindakan.store', $kunjungan->id) }}">
             @csrf
             <h4 class="text-md font-medium text-gray-800 mb-2">Tambah Tindakan Baru:</h4>
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-4 items-end text-gray-700">
                 <div class="md:col-span-3">
                     <label for="tindakan_id" class="block text-sm font-medium text-gray-700">Pilih Tindakan <span class="text-red-500">*</span></label>
                     <select name="tindakan_id" id="tindakan_id" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">

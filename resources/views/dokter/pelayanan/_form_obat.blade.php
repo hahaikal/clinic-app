@@ -31,7 +31,7 @@
         <form method="POST" action="{{ route('dokter.kunjungan.obat.store', $kunjungan->id) }}">
             @csrf
             <h4 class="text-md font-medium text-gray-800 mb-2">Tambah Resep Obat Baru:</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-gray-700">
                 <div class="md:col-span-2">
                     <label for="obat_id" class="block text-sm font-medium text-gray-700">Pilih Obat <span class="text-red-500">*</span></label>
                     <select name="obat_id" id="obat_id" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">

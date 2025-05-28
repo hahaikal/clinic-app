@@ -22,81 +22,83 @@
                     @endif
 
                     @if ($kunjungans->count() > 0)
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        No. Kunjungan
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Tgl Kunjungan
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        No. RM
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Nama Pasien
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Jenis Kunjungan
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Status
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Dokter
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Aksi
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($kunjungans as $kunjungan)
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $kunjungan->no_kunjungan }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $kunjungan->tanggal_kunjungan->format('d M Y, H:i') }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $kunjungan->pasien->no_rm ?? 'N/A' }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $kunjungan->pasien->nama_pasien ?? 'N/A' }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $kunjungan->jenis_kunjungan }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            @php
-                                                $statusClasses = [
-                                                    'Menunggu Antrian Poli' => 'bg-yellow-100 text-yellow-800',
-                                                    'Menunggu Pemeriksaan' => 'bg-blue-100 text-blue-800',
-                                                    'Selesai' => 'bg-green-100 text-green-800',
-                                                    'Batal' => 'bg-red-100 text-red-800',
-                                                ];
-                                            @endphp
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusClasses[$kunjungan->status_kunjungan] ?? 'bg-gray-100 text-gray-800' }}">
-                                                {{ $kunjungan->status_kunjungan }}
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $kunjungan->dokter->nama_pegawai ?? '-' }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <a href="{{ route('dokter.kunjungan.pemeriksaan.form', $kunjungan->id) }}" class="bg-indigo-600 hover:bg-indigo-800 text-black font-bold py-1 px-3 rounded text-xs">
-                                                Periksa
-                                            </a>
-                                            <a href="{{ route('shared.pasien.show', $kunjungan->pasien_id) }}" class="bg-indigo-600 hover:bg-indigo-800 text-black font-bold py-1 px-3 rounded text-xs">
-                                                detail
-                                            </a>
-                                        </td>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            No. Kunjungan
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Tgl Kunjungan
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            No. RM
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Nama Pasien
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Jenis Kunjungan
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Dokter
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Aksi
+                                        </th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach ($kunjungans as $kunjungan)
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $kunjungan->no_kunjungan }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $kunjungan->tanggal_kunjungan->format('d M Y, H:i') }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $kunjungan->pasien->no_rm ?? 'N/A' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $kunjungan->pasien->nama_pasien ?? 'N/A' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $kunjungan->jenis_kunjungan }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                @php
+                                                    $statusClasses = [
+                                                        'Menunggu Antrian Poli' => 'bg-yellow-100 text-yellow-800',
+                                                        'Menunggu Pemeriksaan' => 'bg-blue-100 text-blue-800',
+                                                        'Selesai' => 'bg-green-100 text-green-800',
+                                                        'Batal' => 'bg-red-100 text-red-800',
+                                                    ];
+                                                @endphp
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusClasses[$kunjungan->status_kunjungan] ?? 'bg-gray-100 text-gray-800' }}">
+                                                    {{ $kunjungan->status_kunjungan }}
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $kunjungan->dokter->nama_pegawai ?? '-' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                <a href="{{ route('dokter.kunjungan.pemeriksaan.form', $kunjungan->id) }}" class="bg-indigo-600 hover:bg-indigo-800 text-black font-bold py-1 px-3 rounded text-xs">
+                                                    Periksa
+                                                </a>
+                                                <a href="{{ route('shared.pasien.show', $kunjungan->pasien_id) }}" class="bg-indigo-600 hover:bg-indigo-800 text-black font-bold py-1 px-3 rounded text-xs">
+                                                    detail
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="mt-4">
                             {{ $kunjungans->links() }}
                         </div>
