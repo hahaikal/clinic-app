@@ -33,6 +33,10 @@
                         <x-nav-link :href="route('admin.obat.index')" :active="request()->routeIs('admin.obat.*')">
                             {{ __('Manajemen Obat') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('admin.laporan.index')" :active="request()->routeIs('admin.laporan.index')">
+                            {{ __('Laporan Klinik') }}
+                        </x-nav-link>
                     @endif
 
                     @if(Auth::check() && Auth::user()->hasRole('Petugas Pendaftaran'))

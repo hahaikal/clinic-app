@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ObatController;
 use App\Http\Controllers\Petugas\PendaftaranController;
 use App\Http\Controllers\Dokter\PelayananController;
 use App\Http\Controllers\Kasir\PembayaranController;
+use App\Http\Controllers\Admin\LaporanController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('tindakan', TindakanController::class);
         Route::resource('obat', ObatController::class);
+        Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
     });
 
     Route::middleware('role:Petugas Pendaftaran')->name('petugas.pendaftaran.')->prefix('petugas/pendaftaran')->group(function () {
@@ -53,10 +55,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/staff/laporan-klinik', function () {
         return "Halaman Laporan Klinik (Untuk Admin & Dokter)";
     })->middleware('role:Admin,Dokter')->name('staff.laporan');
-
-    // Route::get('/kasir/pembayaran', function () {
-    //     return "Halaman Pembayaran Pasien (Khusus Kasir)";
-    // })->middleware('role:Kasir')->name('kasir.pembayaran');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
