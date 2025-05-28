@@ -23,9 +23,7 @@
            required autocomplete="email">
 </div>
 
-{{-- Kolom Password hanya ditampilkan/wajib diisi saat membuat user baru (mode 'create') --}}
-{{-- Saat edit, password bisa dikosongkan jika tidak ingin diubah --}}
-@if(!isset($user)) {{-- Atau cara lain untuk menandakan mode create, misal variabel $mode === 'create' --}}
+@if(!isset($user))
     <div class="mb-4">
         <label for="password" class="block text-sm font-medium text-gray-700">Password <span class="text-red-500">*</span></label>
         <input type="password" name="password" id="password"

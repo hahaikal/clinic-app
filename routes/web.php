@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\TindakanController;
 use App\Http\Controllers\Admin\ObatController;
+use App\Http\Controllers\Petugas\PendaftaranController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,14 +25,11 @@ Route::middleware('auth')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('tindakan', TindakanController::class);
         Route::resource('obat', ObatController::class);
+    });
 
-        Route::get('/admin/users', function () {
-            return "Halaman Pengelolaan User (Khusus Admin)";
-        })->middleware('role:Admin')->name('admin.users.index');
-
-        Route::get('/admin/wilayah', function () {
-            return "Halaman Pengelolaan Wilayah (Khusus Admin)";
-        })->middleware('role:Admin')->name('admin.wilayah.index');
+    Route::middleware('role:Petugas Pendaftaran')->name('petugas.pendaftaran.')->prefix('petugas/pendaftaran')->group(function () {
+        Route::get('pasien-baru', [PendaftaranController::class, 'create'])->name('pasien.create');
+        Route::post('pasien-baru', [PendaftaranController::class, 'store'])->name('pasien.store');
     });
 
     Route::get('/dokter/pemeriksaan', function () {
@@ -42,9 +40,7 @@ Route::middleware('auth')->group(function () {
         return "Halaman Laporan Klinik (Untuk Admin & Dokter)";
     })->middleware('role:Admin,Dokter')->name('staff.laporan');
 
-    Route::get('/pendaftaran/pasien-baru', function () {
-        return "Halaman Pendaftaran Pasien Baru (Khusus Petugas Pendaftaran)";
-    })->middleware('role:Petugas Pendaftaran')->name('pendaftaran.pasien.baru');
+    
 
     Route::get('/kasir/pembayaran', function () {
         return "Halaman Pembayaran Pasien (Khusus Kasir)";

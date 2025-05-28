@@ -34,6 +34,12 @@
                             {{ __('Manajemen Obat') }}
                         </x-nav-link>
                     @endif
+
+                    @if(Auth::check() && Auth::user()->hasRole('Petugas Pendaftaran'))
+                        <x-nav-link :href="route('petugas.pendaftaran.pasien.create')" :active="request()->routeIs('petugas.pendaftaran.pasien.create')">
+                            {{ __('Pendaftaran Pasien Baru') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
