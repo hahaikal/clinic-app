@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('jenis_kunjungan');
             $table->text('keluhan_utama')->nullable();
 
-            // Kolom untuk data pemeriksaan awal (vital sign)
             $table->integer('tinggi_badan_cm')->nullable();
             $table->decimal('berat_badan_kg', 5, 2)->nullable();
             $table->decimal('suhu_badan_celsius', 4, 1)->nullable();
@@ -25,7 +24,6 @@ return new class extends Migration
             $table->integer('frekuensi_nadi_per_menit')->nullable();
             $table->integer('frekuensi_nafas_per_menit')->nullable();
 
-            // Penanggung jawab proses
             $table->foreignId('pegawai_id_pendaftar')->constrained('pegawai')->onDelete('restrict');
             $table->foreignId('dokter_id')->nullable()->constrained('pegawai')->onDelete('set null');
             $table->string('status_kunjungan')->default('Menunggu Pendaftaran');

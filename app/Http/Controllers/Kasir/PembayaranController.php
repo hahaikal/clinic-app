@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Kasir;
 
+use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use App\Http\Controllers\Controller;
 use App\Models\Kunjungan;
 use App\Models\Pembayaran;
-use App\Models\Pegawai;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class PembayaranController extends Controller
 {
@@ -126,15 +128,6 @@ class PembayaranController extends Controller
 
             $diskon = $pembayaran->diskon_nominal;
 
-            // if (($validatedData['diskon_persen'] ?? $pembayaran->diskon_persen ?? 0) > 0) {
-            //     $pembayaran->diskon_persen = $validatedData['diskon_persen'] ?? $pembayaran->diskon_persen;
-            //     $diskon = ($pembayaran->subtotal * $pembayaran->diskon_persen) / 100;
-            //     // Jika diskon persen diisi, mungkin nolkan diskon nominal atau sebaliknya
-            //     // $pembayaran->diskon_nominal = 0; 
-            // } else {
-            //     $pembayaran->diskon_persen = 0;
-            // }
-
             $pembayaran->total_setelah_diskon = $pembayaran->subtotal - $diskon;
             $pembayaran->grand_total = $pembayaran->total_setelah_diskon;
 
@@ -179,4 +172,32 @@ class PembayaranController extends Controller
             return redirect()->back()->withInput()->with('error', 'Gagal memproses pembayaran. Silakan coba lagi. Pesan: ' . $e->getMessage());
         }
     }
+
+    public function cetakStruk(Kunjungan $kunjungan)
+    {
+        $kunjungan->load(['pasien', 'pembayaran', 'daftarTindakan.tindakan', 'daftarObat.obat', 'dokter']);
+
+        if (!$kunjungan->pembayaran || $kunjungan->pembayaran->status_pembayaran !== 'Lunas') {
+            return redirect()->back()->with('error', 'Struk hanya bisa dicetak untuk tagihan yang sudah lunas.');
+        }
+
+        $data = [
+            'kunjungan' => $kunjungan,
+            'pembayaran' => $kunjungan->pembayaran,
+            'namaKlinik' => config('app.name', 'Clinic-App'),
+        ];
+
+        $pdf = Pdf::loadView('kasir.pembayaran.cetak_struk_pdf', $data);
+
+        // Ukuran
+        // $pdf->setPaper('a4', 'potrait');
+
+        // Custom
+        // $width = 80; // mm
+        // $height = 200; // mm (bisa dibuat dinamis atau panjang maksimal)
+        // $customPaper = array(0,0, ($width/25.4)*72, ($height/25.4)*72 ); // konversi mm ke point
+        // $pdf->setPaper($customPaper, 'portrait');
+
+        return $pdf->download('struk-pembayaran-'.$kunjungan->no_kunjungan.'.pdf');
+}
 }

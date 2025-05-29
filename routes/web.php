@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
         Route::get('daftar-tagihan', [PembayaranController::class, 'indexDaftarTagihan'])->name('tagihan.index');
         Route::get('tagihan/{kunjungan}/bayar', [PembayaranController::class, 'showFormPembayaran'])->name('tagihan.bayar.form');
         Route::post('tagihan/{kunjungan}/proses', [PembayaranController::class, 'prosesPembayaran'])->name('tagihan.proses');
+        Route::get('tagihan/{kunjungan}/cetak-struk', [PembayaranController::class, 'cetakStruk'])->name('tagihan.cetak_struk');
     });
 
     Route::middleware('role:Petugas Pendaftaran,Dokter')->name('shared.')->prefix('shared')->group(function () {

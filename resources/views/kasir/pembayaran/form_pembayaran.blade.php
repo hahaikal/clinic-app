@@ -129,6 +129,11 @@
                                 <p class="text-sm">Jumlah Bayar: Rp {{ number_format($pembayaran->jumlah_bayar, 0, ',', '.') }}</p>
                                 <p class="text-sm">Kembalian: Rp {{ number_format($pembayaran->kembalian, 0, ',', '.') }}</p>
                             </div>
+                            <div class="mt-4">
+                                <a href="{{ route('kasir.tagihan.cetak_struk', $kunjungan->id) }}" target="_blank" class="btn btn-info btn-sm">
+                                    Cetak Struk Pembayaran
+                                </a>
+                            </div>
                         @endif
                     </form>
                 </div>

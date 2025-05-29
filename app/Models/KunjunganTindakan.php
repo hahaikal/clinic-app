@@ -17,7 +17,6 @@ class KunjunganTindakan extends Model
         'jumlah',
         'harga_saat_transaksi',
         'catatan_tindakan',
-        // 'pelaksana_id',
     ];
 
     protected $casts = [
@@ -34,9 +33,4 @@ class KunjunganTindakan extends Model
     {
         return $this->belongsTo(Tindakan::class);
     }
-
-    // public function pelaksana()
-    // {
-    //     return $this->belongsTo(Pegawai::class, 'pelaksana_id');
-    // }
 }

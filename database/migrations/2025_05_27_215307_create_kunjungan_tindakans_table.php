@@ -15,7 +15,6 @@ return new class extends Migration
             $table->integer('jumlah')->default(1);
             $table->decimal('harga_saat_transaksi', 15, 2);
             $table->text('catatan_tindakan')->nullable();
-            // $table->foreignId('pelaksana_id')->nullable()->constrained('pegawai')->onDelete('set null');
             $table->timestamps();
 
             $table->unique(['kunjungan_id', 'tindakan_id']);
