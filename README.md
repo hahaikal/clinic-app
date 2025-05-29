@@ -120,20 +120,23 @@ Setelah menjalankan `php artisan migrate --seed`, Anda dapat login menggunakan a
 
 
 ## Alur Kerja Pengunaan Aplikasi
-- **Login (Admin)**: - *Membuat Akun User lain (Petugas Pendaftaran, Dokter, Kasir) di halaman Manajemen User*
-                     - *Mengelola Manajemen Pegawai dengan Menautkan ke Akun User*
-                     - *Mengelola Data Master Wilayah Administratif*
-                     - *Mengelola Data Master Tindakan Medis*
-                     - *Mengelola Data Master Obat*
+- **Login (Admin)**: 
+    - *Membuat Akun User lain (Petugas Pendaftaran, Dokter, Kasir) di halaman Manajemen User*
+    - *Mengelola Manajemen Pegawai dengan Menautkan ke Akun User*
+    - *Mengelola Data Master Wilayah Administratif*
+    - *Mengelola Data Master Tindakan Medis*
+    - *Mengelola Data Master Obat*
 
 - **Login (Petugas Pendaftaran)**:
-                     - *Mengelola Pendaftaran Pasien*
+    - *Mengelola Pendaftaran Pasien*
 
-- **Login (Dokter)**:- *Menindaklanjuti Kunjungan Pasien/Melakukan Pemeriksaan Pasien*
-                     - *Tambah Tindakan Medis*
-                     - *Tambah Obat*
-                     - *SOAP*
-                     - *Selesaikan Pemeriksaan*
+- **Login (Dokter)**:
+    - *Menindaklanjuti Kunjungan Pasien/Melakukan Pemeriksaan Pasien*
+    - *Tambah Tindakan Medis*
+    - *Tambah Obat*
+    - *SOAP*
+    - *Selesaikan Pemeriksaan*
 
-- **Login (Kasir)**: - *Melakukan Proses Pembayaran*
-                     - *Mencetak Struk Pembayaran*
+- **Login (Kasir)**: 
+    - *Melakukan Proses Pembayaran*
+    - *Mencetak Struk Pembayaran*
