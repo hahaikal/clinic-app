@@ -1,61 +1,139 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Clinic-app (Sistem Informasi Klinik)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem Informasi Klinik "Clinic-app" adalah aplikasi web yang dirancang untuk membantu mengelola operasional klinik, mulai dari pendaftaran pasien, pemeriksaan medis, manajemen data master, hingga proses pembayaran dan pelaporan. Aplikasi ini dibangun menggunakan framework Laravel dengan antarmuka pengguna yang modern.
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Untuk Admin:
+- Manajemen Pengguna Sistem (User & Role)
+- Manajemen Data Pegawai (Dokter, Petugas, Kasir)
+- Manajemen Data Master Wilayah
+- Manajemen Data Master Tindakan Medis
+- Manajemen Data Master Obat
+- Melihat Laporan Klinik (Grafik Kunjungan Harian/Bulanan, Tindakan & Obat Terbanyak)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Untuk Petugas Pendaftaran:
+- Pendaftaran Kunjungan untuk Pasien Baru & Lama
+- Melihat Detail Pasien dan Riwayat Kunjungan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Untuk Dokter:
+- Melihat Daftar Kunjungan Pasien yang perlu dilayani
+- Melakukan Pemeriksaan Pasien
+- Menambahkan Tindakan Medis ke dalam Kunjungan
+- Membuat dan Menambahkan Resep Obat
+- Menyelesaikan Proses Pemeriksaan
+- Melihat Detail Pasien dan Riwayat Kunjungan
 
-## Learning Laravel
+### Untuk Kasir:
+- Melihat Daftar Tagihan Pasien yang Menunggu Pembayaran
+- Memproses Pembayaran Tagihan
+- Mencetak Struk Pembayaran
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Fitur Umum:
+- Autentikasi Pengguna
+- Manajemen Profil Pengguna
+- Halaman Landing Page yang Informatif
+- Dashboard Dinamis Berdasarkan Peran Pengguna
+- Navigasi Aplikasi yang Disederhanakan
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Teknologi yang Digunakan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Backend:** Laravel Framework 12.x
+- **Frontend:**
+    - Blade Templating Engine
+    - Tailwind CSS
+    - DaisyUI (Plugin Tailwind CSS)
+    - Alpine.js
+- **Database:** PostgreSQL
+- **PDF Generation:** `barryvdh/laravel-dompdf`
+- **Build Tool:** Vite
 
-## Laravel Sponsors
+## Persyaratan Sistem
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- PHP ^8.2
+- Composer 2.x
+- Node.js & NPM
+- Database PostgreSQL
 
-### Premium Partners
+## Instalasi & Setup
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1.  Clone repository ini:
+    \`\`\`bash
+    git clone https://github.com/hahaikal/clinic-app clinic-app
+    cd clinic-app
+    \`\`\`
+2.  Install dependensi PHP:
+    \`\`\`bash      
+    composer install
+    \`\`\`
+3.  Salin file environment:
+    \`\`\`bash
+    cp .env.example .env
+    \`\`\`
+4.  Generate application key:
+    \`\`\`bash
+    php artisan key:generate
+    \`\`\`
+5.  Konfigurasi database Anda di file `.env`:
+    \`\`\`env
+    \`\`\`
+6.  Jalankan migrasi dan seeder:
+    \`\`\`bash
+    php artisan migrate --seed
+    \`\`\`
+7.  Install dependensi JavaScript:
+    \`\`\`bash
+    npm install
+    \`\`\`
+8.  Build aset frontend:
+    \`\`\`bash
+    npm run build
+    \`\`\`
 
-## Contributing
+## Menjalankan Aplikasi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Untuk Development (menggunakan server bawaan Laravel dan Vite):**
+  Jalankan perintah berikut dari root direktori proyek:
+  \`\`\`bash
+  composer run dev
+  \`\`\`
+  Aplikasi akan tersedia di `http://localhost:8000`.
 
-## Code of Conduct
+## Kredensial Login Default
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Setelah menjalankan `php artisan migrate --seed`, Anda dapat login menggunakan akun admin default:
+- **Email:** `admin@klinik.com`
+- **Password:** `admin123`
 
-## Security Vulnerabilities
+## Struktur Database
+- **users**: Menyimpan data pengguna sistem (login).
+- **roles**: Menyimpan daftar peran pengguna (Admin, Petugas, Dokter, Kasir).
+- **pegawai**: Menyimpan data detail pegawai/staff klinik, tertaut ke tabel `users`.
+- **wilayahs**: Menyimpan data master wilayah administratif.
+- **pasien**: Menyimpan data rekam medis pasien.
+- **kunjungan**: Mencatat setiap kunjungan pasien ke klinik.
+- **tindakan**: Menyimpan data master tindakan medis beserta tarifnya.
+- **obat**: Menyimpan data master obat beserta stok dan harga.
+- **kunjungan_tindakan**: Tabel pivot untuk mencatat tindakan yang diberikan pada suatu kunjungan.
+- **kunjungan_obat**: Tabel pivot untuk mencatat obat yang diresepkan pada suatu kunjungan.
+- **pembayaran**: Mencatat detail tagihan dan status pembayaran untuk setiap kunjungan.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## Alur Kerja Pengunaan Aplikasi
+- **Login (Admin)**: - *Membuat Akun User lain (Petugas Pendaftaran, Dokter, Kasir) di halaman Manajemen User*
+                     - *Mengelola Manajemen Pegawai dengan Menautkan ke Akun User*
+                     - *Mengelola Data Master Wilayah Administratif*
+                     - *Mengelola Data Master Tindakan Medis*
+                     - *Mengelola Data Master Obat*
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Login (Petugas Pendaftaran)**:
+                     - *Mengelola Pendaftaran Pasien*
+
+- **Login (Dokter)**:- *Menindaklanjuti Kunjungan Pasien/Melakukan Pemeriksaan Pasien*
+                     - *Tambah Tindakan Medis*
+                     - *Tambah Obat*
+                     - *SOAP*
+                     - *Selesaikan Pemeriksaan*
+
+- **Login (Kasir)**: - *Melakukan Proses Pembayaran*
+                     - *Mencetak Struk Pembayaran*
